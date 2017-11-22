@@ -2,6 +2,8 @@
 Main.py All functions & Libraries to run go here
 """
 import os   #imports OS features
+from urllib import urlopen  #Requests a URL
+import io
 from tld import get_tld     #Extracts the top level domains from URL
 
 
@@ -91,6 +93,23 @@ def get_nmap(scan, ip):
     return nmap
 
 
+"""
+Robots Function
+"""
+
+
+def get_robots(url):
+    if url.endswith('/'):
+        path = url
+    else:
+        path = url+'/'
+    requests = urlopen(path + "robots.txt", data=None)
+    data = io.TextIOWrapper(requests, encoding='utf-8')
+    robots = data.read()
+    return robots
+
+
+
 if __name__ == '__main__':
     main()
-
+    print(get_robots('www.itb.ie'))
