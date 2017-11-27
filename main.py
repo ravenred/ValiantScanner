@@ -2,7 +2,7 @@
 Main.py All functions & Libraries to run go here
 """
 import os   #imports OS features
-from urllib import urlopen  #Requests a URL
+import urllib #Requests a URL
 import io
 from tld import get_tld     #Extracts the top level domains from URL
 
@@ -102,14 +102,16 @@ def get_robots(url):
     if url.endswith('/'):
         path = url
     else:
-        path = url+'/'
-    requests = urlopen(path + "robots.txt", data=None)
-    data = io.TextIOWrapper(requests, encoding='utf-8')
-    robots = data.read()
+        path = 'http://'+url+'/'
+    requests = urllib.urlopen(path + "robots.txt", data=None)
+    #data = io.TextIOWrapper(requests, encoding='utf-8')
+    robots = requests.read()
     return robots
 
 
 
 if __name__ == '__main__':
     main()
-    print(get_robots('www.itb.ie'))
+    print(get_ip("www.itb.ie"))
+    print(get_robots("www.itb.ie"))
+    print(get_nmap("-sV", get_ip("www.itb.ie")))
