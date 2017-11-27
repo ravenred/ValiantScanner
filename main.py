@@ -109,9 +109,9 @@ def get_robots(url):
     return robots
 
 
-
 if __name__ == '__main__':
     main()
+    #print(get_domain_name("www.itb.ie"))
     print(get_ip("www.itb.ie"))
     print(get_robots("www.itb.ie"))
     print(get_nmap("-sV", get_ip("www.itb.ie")))
