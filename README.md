@@ -19,6 +19,7 @@ Vulnerabilities to Scan for:
 4. Broken Access Control
 5. Cross Site Scripting(XSS)
 6. Path Traversal
+7. Remote File Invlusion
 
 Description
 1. SQL injection
