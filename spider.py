@@ -7,6 +7,7 @@ import re
 
 def get_links(url):
 
+    print("Spider Started....")
     path = "https://"+url
     requests = urllib.urlopen(path, data=None)
     links = requests.read()
@@ -15,8 +16,11 @@ def get_links(url):
     find_links = re.findall('<a href="(.*?)">', str(links))     # Uses re library to find all href sources
 
     for a in find_links:
+        if "http" not in a:
+            if "mailto:" not in a:
 
-            print(a.split(" ")[0])  # Deletes all characters after whitespace
+                    sub_url = a.split(" ")[0]  # Deletes all characters after whitespace
+                    fullurl = url+"/"+sub_url
+                    return fullurl
 
-
-get_links("www.itb.ie")
+# get_links("www.itb.ie")
