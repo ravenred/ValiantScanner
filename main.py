@@ -1,21 +1,22 @@
 """
 Main.py All functions & Libraries to run go here
 """
-import os   #imports OS features
-import urllib #Requests a URL
-import io
-from tld import get_tld     #Extracts the top level domains from URL
+from recon import *
 
 
 def main():
+
     banner()
+    report_findings("Google", "https://www.google.ie")
 
 
 """
 Banner Function
 """
 
+
 def banner():
+
     print("******************************\n"
           "              ^               \n"                                         
           "             | |              \n"                                        
@@ -48,6 +49,7 @@ def make_home_directory(directory):
     if not os.path.exists(directory):
         os.makedirs(directory)
 
+
 """
 Write file function
 """
@@ -57,61 +59,40 @@ def write_to_file(path, output):
     f = open(path, 'w')
     f.write(output)
 
-"""
-Gets the domain name from URL
-"""
-
-
-def get_domain_name(url):
-    domain_name = get_tld(url)
-    return domain_name
 
 """
-Get website ip address
+Report Findings function
 """
 
 
-def get_ip(url):
-    command = "host "+url
-    execute = os.popen(command)
-    result = str(execute.read())
-    finder = result.find('has address')+12
-    ip = result[finder:].splitlines()[0]
-    return ip
-
-"""
-NMAP Scan Function
-@:param scan Scan Options
-@:param ip IP Address
-"""
-
-
-def get_nmap(scan, ip):
-    command = "nmap "+scan+" "+ip
-    execute = os.popen(command)
-    nmap = str(execute.read())
-    return nmap
+def report_findings(name, url):
+    domain_name = get_domain_name(url)
+    ip_address = get_ip(domain_name)
+    robots = get_robots(domain_name)
+    whois = get_whois(domain_name)
+    nmap = get_nmap("-sV", ip_address)
+    create_report(name, url, domain_name, ip_address, robots, whois, nmap)
 
 
 """
-Robots Function
+Create Report Function
 """
 
 
-def get_robots(url):
-    if url.endswith('/'):
-        path = url
-    else:
-        path = 'http://'+url+'/'
-    requests = urllib.urlopen(path + "robots.txt", data=None)
-    #data = io.TextIOWrapper(requests, encoding='utf-8')
-    robots = requests.read()
-    return robots
+def create_report(name, url, domain_name, ip_address, robots, whois, nmap):
+
+    root_folder = 'targets'
+    make_home_directory(root_folder)
+
+    target_directory = root_folder+"/"+name
+    make_home_directory(target_directory)
+    write_to_file(target_directory + "/url.txt", url)
+    write_to_file(target_directory + "/domain.txt", domain_name)
+    write_to_file(target_directory + "/ip.txt", ip_address)
+    write_to_file(target_directory + "/robots.txt", robots)
+    write_to_file(target_directory + "/whois.txt", whois)
+    write_to_file(target_directory + "/nmap.txt", nmap)
 
 
 if __name__ == '__main__':
     main()
-    #print(get_domain_name("www.itb.ie"))
-    print(get_ip("www.itb.ie"))
-    print(get_robots("www.itb.ie"))
-    print(get_nmap("-sV", get_ip("www.itb.ie")))
