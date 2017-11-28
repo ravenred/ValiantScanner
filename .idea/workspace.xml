@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f22c805-fd7c-4119-aeee-ecbf175a293c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/recon.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -228,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1511786465566</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="main.py Used to Report results&#10;recon.py Contains all report areas now">
+      <created>1511827720423</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1511827720423</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -288,7 +293,8 @@
     <MESSAGE value="Get Robots function added(requests not workiking!)" />
     <MESSAGE value="Get Robots text working&#10;Requests is working" />
     <MESSAGE value="Get domain name function not working" />
-    <option name="LAST_COMMIT_MESSAGE" value="Get domain name function not working" />
+    <MESSAGE value="main.py Used to Report results&#10;recon.py Contains all report areas now" />
+    <option name="LAST_COMMIT_MESSAGE" value="main.py Used to Report results&#10;recon.py Contains all report areas now" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
