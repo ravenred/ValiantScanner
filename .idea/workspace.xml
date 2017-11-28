@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2f22c805-fd7c-4119-aeee-ecbf175a293c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spider.py" afterPath="$PROJECT_DIR$/spider.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,8 +17,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+            <state relative-caret-position="1332">
+              <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -26,7 +27,7 @@
       <file leaf-file-name="recon.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/recon.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="502">
+            <state relative-caret-position="936">
               <caret line="54" column="61" lean-forward="false" selection-start-line="54" selection-start-column="61" selection-end-line="54" selection-end-column="61" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
@@ -39,7 +40,7 @@
         <entry file="file://$PROJECT_DIR$/spider.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="252">
-              <caret line="14" column="57" lean-forward="true" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
+              <caret line="14" column="82" lean-forward="false" selection-start-line="14" selection-start-column="82" selection-end-line="14" selection-end-column="82" />
               <folding>
                 <element signature="e#52#65#0" expanded="true" />
               </folding>
@@ -296,11 +297,19 @@
       <option name="project" value="LOCAL" />
       <updated>1511882031306</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="spider.py Not working but no errors">
+      <created>1511882049945</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1511882049945</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -365,6 +374,34 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1332">
+          <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/recon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="972">
+          <caret line="54" column="61" lean-forward="false" selection-start-line="54" selection-start-column="61" selection-end-line="54" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="14" column="57" lean-forward="true" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
+          <folding>
+            <element signature="e#52#65#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1062">
@@ -458,15 +495,15 @@
     <entry file="file://$PROJECT_DIR$/spider.txt" />
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+        <state relative-caret-position="1332">
+          <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/recon.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
+        <state relative-caret-position="936">
           <caret line="54" column="61" lean-forward="false" selection-start-line="54" selection-start-column="61" selection-end-line="54" selection-end-column="61" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
@@ -477,7 +514,7 @@
     <entry file="file://$PROJECT_DIR$/spider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
-          <caret line="14" column="57" lean-forward="true" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
+          <caret line="14" column="82" lean-forward="false" selection-start-line="14" selection-start-column="82" selection-end-line="14" selection-end-column="82" />
           <folding>
             <element signature="e#52#65#0" expanded="true" />
           </folding>
