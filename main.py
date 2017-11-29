@@ -72,7 +72,7 @@ def report_findings(name, url):
     robots = get_robots(domain_name)
     whois = get_whois(domain_name)
     nmap = get_nmap("-sV", ip_address)
-    spider = get_links(domain_name)
+    spider = get_links(url)
 
     create_report(name, url, domain_name, ip_address, robots, whois, nmap, spider)
 

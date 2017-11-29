@@ -8,8 +8,7 @@ import re
 def get_links(url):
 
     print("Spider Started....")
-    path = "https://"+url
-    requests = urllib.urlopen(path, data=None)
+    requests = urllib.urlopen(url, data=None)
     links = requests.read()
     # print(requests.status)
 
@@ -20,7 +19,5 @@ def get_links(url):
             if "mailto:" not in a:
 
                     sub_url = a.split(" ")[0]  # Deletes all characters after whitespace
-                    fullurl = url+"/"+sub_url
+                    fullurl = url+sub_url
                     return fullurl
-
-# get_links("www.itb.ie")
