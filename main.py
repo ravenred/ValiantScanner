@@ -71,10 +71,10 @@ def report_findings(name, url):
     ip_address = get_ip(domain_name)
     robots = get_robots(domain_name)
     whois = get_whois(domain_name)
-    nmap = get_nmap("-sV", ip_address)
-    spider = get_links(url)
+    # nmap = get_nmap("-sV", ip_address)
+    # spider = get_links(url)
 
-    create_report(name, url, domain_name, ip_address, robots, whois, nmap, spider)
+    create_report(name, url, domain_name, ip_address, robots, whois) # ,nmap, spider
 
 
 """
@@ -82,7 +82,7 @@ Create Report Function
 """
 
 
-def create_report(name, url, domain_name, ip_address, robots, whois, nmap, spider):
+def create_report(name, url, domain_name, ip_address, robots, whois): # ,nmap, spider
 
     root_folder = 'targets'
     make_home_directory(root_folder)
@@ -94,8 +94,8 @@ def create_report(name, url, domain_name, ip_address, robots, whois, nmap, spide
     write_to_file(target_directory + "/ip.txt", ip_address)
     write_to_file(target_directory + "/robots.txt", robots)
     write_to_file(target_directory + "/whois.txt", whois)
-    write_to_file(target_directory + "/nmap.txt", nmap)
-    write_to_file(target_directory + "/spider.txt", spider)
+    #write_to_file(target_directory + "/nmap.txt", nmap)
+    #write_to_file(target_directory + "/spider.txt", spider)
 
 
 if __name__ == '__main__':
