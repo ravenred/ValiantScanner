@@ -8,7 +8,7 @@ from spider import *
 def main():
 
     banner()
-    report_findings("Google", "https://www.google.ie")
+    report_findings("Mutillidae", "http://10.0.0.2/")
 
 
 """
@@ -67,22 +67,22 @@ Report Findings function
 
 
 def report_findings(name, url):
-    domain_name = get_domain_name(url)
-    ip_address = get_ip(domain_name)
-    robots = get_robots(domain_name)
-    whois = get_whois(domain_name)
+    #domain_name = get_domain_name(url)
+    #ip_address = get_ip(domain_name)
+    #robots = get_robots(domain_name)
+    #whois = get_whois(domain_name)
     # nmap = get_nmap("-sV", ip_address)
-    # spider = get_links(url)
+    spider = get_links(url)
 
-    create_report(name, url, domain_name, ip_address, robots, whois) # ,nmap, spider
-
+    #create_report(name, url, domain_name, ip_address, robots, whois, spider) # ,nmap
+    create_report(name, url, spider)
 
 """
 Create Report Function
 """
 
-
-def create_report(name, url, domain_name, ip_address, robots, whois): # ,nmap, spider
+def create_report(name, url, spider):
+#def create_report(name, url, domain_name, ip_address, robots, whois, spider): # ,nmap
 
     root_folder = 'targets'
     make_home_directory(root_folder)
@@ -90,12 +90,12 @@ def create_report(name, url, domain_name, ip_address, robots, whois): # ,nmap, s
     target_directory = root_folder+"/"+name
     make_home_directory(target_directory)
     write_to_file(target_directory + "/url.txt", url)
-    write_to_file(target_directory + "/domain.txt", domain_name)
-    write_to_file(target_directory + "/ip.txt", ip_address)
-    write_to_file(target_directory + "/robots.txt", robots)
-    write_to_file(target_directory + "/whois.txt", whois)
+    #write_to_file(target_directory + "/domain.txt", domain_name)
+    #write_to_file(target_directory + "/ip.txt", ip_address)
+    #write_to_file(target_directory + "/robots.txt", robots)
+    #write_to_file(target_directory + "/whois.txt", whois)
+    write_to_file(target_directory + "/crawled.txt", spider)
     #write_to_file(target_directory + "/nmap.txt", nmap)
-    #write_to_file(target_directory + "/spider.txt", spider)
 
 
 if __name__ == '__main__':
