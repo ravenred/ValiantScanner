@@ -8,7 +8,7 @@ from spider import *
 def main():
 
     banner()
-    report_findings("ITB", "http://www.itb.ie/")
+    report_findings("Mutillidae", "http://10.0.0.2/")
 
 
 """
