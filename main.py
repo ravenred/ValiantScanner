@@ -8,7 +8,7 @@ from spider import *
 def main():
 
     banner()
-    report_findings("Mutillidae", "http://10.0.0.2/")
+    report_findings("ITB", "http://www.itb.ie/")
 
 
 """
@@ -83,7 +83,7 @@ Create Report Function
 def create_report(name, url):
 #def create_report(name, url, domain_name, ip_address, robots, whois, spider): # ,nmap
 
-    root_folder = 'targets'
+    root_folder = 'sites'
     make_home_directory(root_folder)
 
     target_directory = root_folder+"/"+name

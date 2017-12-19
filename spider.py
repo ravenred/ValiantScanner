@@ -7,7 +7,7 @@ import re
 
 def get_links(name, url):
 
-    root_folder = 'targets'
+    root_folder = 'sites'
     path = root_folder + "/" + name + "/" + "crawled.txt"
 
     f = open(path, 'w')
