@@ -3,12 +3,15 @@ Main.py All functions & Libraries to run go here
 """
 from recon import *
 from spider import *
+from valiant import *
 
 
 def main():
 
     banner()
-    report_findings("ITB", "http://www.itb.ie/")
+    report_findings("MUTILLIDAE", "http://192.168.1.4/mutillidae/")
+
+    read_file("MUTILLIDAE")
 
 
 """

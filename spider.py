@@ -18,8 +18,6 @@ def get_links(name, url):
 
     find_links = re.findall('<a href="(.*?)">', str(links))     # Uses re library to find all href sources
 
-    # path = "targets/"+name+"/links.txt"
-    # f = open(path, 'w')
     url_list = []
 
     for a in find_links:
