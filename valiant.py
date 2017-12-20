@@ -1,4 +1,5 @@
 import urllib
+import urlparse
 import urllib2
 import re
 
@@ -29,9 +30,11 @@ def sql_inject(name, link):
     request = urllib.urlopen(link, data)
     page = request.read()
 
+    newfile = root_folder + "/" + name + "/" + "sqli.txt"
+
     for x in errors:
         if x in page:
-            g = open(path, 'w')
+            g = open(newfile, 'w')
 
             g.write(
                 "\033[01;31mVulnerability Found in: \033[00m\n"
@@ -39,4 +42,17 @@ def sql_inject(name, link):
             )
 
 
+def path_traversal(name):
 
+    root_folder = 'sites'
+    path = root_folder + "/" + name + "/" + "crawled.txt"
+
+    f = open(path, 'r')
+
+    for line in f:
+        if "page=" in line:
+            line.split()
+            print(line[:])
+
+
+path_traversal("MUTILLIDAE")
