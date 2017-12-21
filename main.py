@@ -9,9 +9,13 @@ from valiant import *
 def main():
 
     banner()
-    #name = raw_input("[+] Please Enter A Targets Name: ")
-    #url= raw_input("[+] Please Enter A Targets Name: ")
-    report_findings("MUTILLIDAE", "http://192.168.1.4/mutillidae/")
+    name = raw_input("[+] Please Enter A Targets Name: ")
+    url = raw_input("[+] Please Enter A Targets URL: ")
+    print("***************************************************************")
+    get_links(name, url)
+    print("***************************************************************")
+    print("[+] Websites IP:"+get_ip(url))
+
 
     read_file("MUTILLIDAE")
 
@@ -77,13 +81,13 @@ def report_findings(name, url):
     #robots = get_robots(domain_name)
     #whois = get_whois(domain_name)
     # nmap = get_nmap("-sV", ip_address)
-    #create_report(name, url, domain_name, ip_address, robots, whois, spider) # ,nmap
     create_report(name, url)
-    get_links(name,url)
+    #get_links(name, url)
 
 """
 Create Report Function
 """
+
 
 def create_report(name, url):
 #def create_report(name, url, domain_name, ip_address, robots, whois, spider): # ,nmap

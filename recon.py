@@ -1,16 +1,5 @@
 import os   # imports OS features
 import urllib   # Requests a URL
-from tld import get_tld     # Extracts the top level domains from URL
-
-"""
-Gets the domain name from URL
-"""
-
-
-def get_domain_name(url):
-    print("Obtaining Top Level Domain.....")
-    domain_name = get_tld(url)
-    return domain_name
 
 """
 Get website ip address

