@@ -27,7 +27,15 @@ def main():
 
     elif sql != "y" or "Y":
         print("***************************************************************")
+        pathtraversal = raw_input("[*] Scan for Path Traversal Vulnerabilities (y/n)")
+        if pathtraversal == "y" or "Y":
+            print("***************************************************************")
+            print()
 
+        elif pathtraversal != "y" or "Y":
+            print("***************************************************************")
+            print("[-] Valiant Scanner Stopping.....")
+            print("***************************************************************")
 
 
 """
