@@ -9,9 +9,25 @@ def main():
 
     banner()
     name = raw_input("[+] Please Enter A Targets Name: ")
-    url = raw_input("[+] Please Enter A Targets URL: ")
+
+    try:
+        url = raw_input("[+] Please Enter A Targets URL: ")
+    except IOError:
+        print("***************************************************************")
+        url = raw_input("[+] Please Enter a Valid URL")
+
     print("***************************************************************")
     create_report(name, url)
+    print("***************************************************************")
+    sql = raw_input("[*] Scan for SQL Vulnerabilities (y/n)")
+
+    if sql == "y" or "Y":
+        print("***************************************************************")
+        print()
+
+    elif sql != "y" or "Y":
+        print("***************************************************************")
+
 
 
 """
@@ -98,4 +114,9 @@ def create_report(name, url):
 
 
 if __name__ == '__main__':
-    main()
+
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("[-] Keyboard Interrupt")
+        print("[-] Valiant Scanner Stopping.....")

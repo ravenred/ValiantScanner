@@ -1,5 +1,16 @@
 import os   # imports OS features
 import urllib   # Requests a URL
+from tld import get_tld     # Extracts the top level domains from URL
+
+"""
+Gets the domain name from URL
+"""
+
+
+def get_domain_name(url):
+    print("Obtaining Top Level Domain.....")
+    domain_name = get_tld(url)
+    return domain_name
 
 """
 Get website ip address
@@ -51,9 +62,9 @@ Whois Function
 """
 
 
-def get_whois(url):
+def get_whois(domain_name):
     print("Fetching Whois Info.....")
-    command = "whois "+url
+    command = "whois "+domain_name
     execute = os.popen(command)
     whois = str(execute.read())
     return whois
