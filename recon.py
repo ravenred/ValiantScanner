@@ -51,9 +51,9 @@ Whois Function
 """
 
 
-def get_whois(domain_name):
+def get_whois(url):
     print("Fetching Whois Info.....")
-    command = "whois "+domain_name
+    command = "whois "+url
     execute = os.popen(command)
     whois = str(execute.read())
     return whois
