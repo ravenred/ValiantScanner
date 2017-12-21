@@ -9,6 +9,8 @@ from valiant import *
 def main():
 
     banner()
+    #name = raw_input("[+] Please Enter A Targets Name: ")
+    #url= raw_input("[+] Please Enter A Targets Name: ")
     report_findings("MUTILLIDAE", "http://192.168.1.4/mutillidae/")
 
     read_file("MUTILLIDAE")
