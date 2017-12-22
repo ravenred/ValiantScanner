@@ -3,18 +3,13 @@ Main.py All functions & Libraries to run go here
 """
 from recon import *
 from spider import *
-
+from valiant import *
 
 def main():
 
     banner()
     name = raw_input("[+] Please Enter A Targets Name: ")
-
-    try:
-        url = raw_input("[+] Please Enter A Targets URL: ")
-    except IOError:
-        print("***************************************************************")
-        url = raw_input("[+] Please Enter a Valid URL")
+    url = raw_input("[+] Please Enter A Targets URL: ")
 
     print("***************************************************************")
     create_report(name, url)
@@ -23,19 +18,35 @@ def main():
 
     if sql == "y" or "Y":
         print("***************************************************************")
-        print()
+        sql_inject(name)
 
     elif sql != "y" or "Y":
         print("***************************************************************")
-        pathtraversal = raw_input("[*] Scan for Path Traversal Vulnerabilities (y/n)")
-        if pathtraversal == "y" or "Y":
-            print("***************************************************************")
-            print()
 
-        elif pathtraversal != "y" or "Y":
-            print("***************************************************************")
-            print("[-] Valiant Scanner Stopping.....")
-            print("***************************************************************")
+    pathtraversal = raw_input("[*] Scan for Path Traversal Vulnerabilities (y/n)")
+    if pathtraversal == "y" or "Y":
+        print("***************************************************************")
+        path_traversal(name)
+
+    elif pathtraversal != "y" or "Y":
+        print("***************************************************************")
+
+    xss = raw_input("[*] Scan for Cross Site Scripting Vulnerabilities (y/n)")
+    if xss == "y" or "Y":
+        print("***************************************************************")
+        cross_site_script(name)
+    elif xss != "y" or "Y":
+        print("***************************************************************")
+
+    rci = raw_input(" [*] Scan for Remote Code Injection Vulnerabilities (y/n)")
+    if rci == "y" or "Y":
+        print("***************************************************************")
+        remote_code_injection(name)
+
+    elif rci != "y" or "Y":
+        print("***************************************************************")
+        print("[-] Valiant Scanner Stopping.....")
+        print("***************************************************************")
 
 
 """

