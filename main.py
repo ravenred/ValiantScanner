@@ -13,6 +13,7 @@ def main():
 
     print("***************************************************************")
     create_report(name, url)
+
     print("***************************************************************")
     sql = raw_input("[*] Scan for SQL Vulnerabilities (y/n)")
 
@@ -97,16 +98,6 @@ Write file function
 def write_to_file(path, output):
     f = open(path, 'w')
     f.write(output)
-
-
-"""
-Report Findings function
-"""
-
-
-def report_findings(name, url):
-
-    print("hi")
 
 
 """

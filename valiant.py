@@ -95,7 +95,6 @@ def path_traversal(name):
                         g.write(found + "\n")
                         print(found)
 
-
                     else:
                         notfound = "[*] Path Traversal Not Found : " + q3
                         g.write(notfound + "\n")
@@ -117,9 +116,13 @@ def cross_site_script(name):
         request = urllib.urlopen(url)
         res = request.read()
 
+        newfile = root_folder + "/" + name + "/" + "xss.txt"
+        g = open(newfile, "a")
+
         if payload in res:
 
             print("\033[01;31m[*] XSS Vulnerability Found: \033[00m"+line)
+            g.write("\033[01;31m[*] XSS Vulnerability Found: \033[00m"+line)
         else:
             print("[-] XSS Not Vulnerability Found: "+line)
 
