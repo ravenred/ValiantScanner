@@ -5,6 +5,7 @@ from recon import *
 from spider import *
 from valiant import *
 
+
 def main():
 
     banner()
@@ -88,16 +89,6 @@ Makes a home directory function
 def make_home_directory(directory):
     if not os.path.exists(directory):
         os.makedirs(directory)
-
-
-"""
-Write file function
-"""
-
-
-def write_to_file(path, output):
-    f = open(path, 'w')
-    f.write(output)
 
 
 """
