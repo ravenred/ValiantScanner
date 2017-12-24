@@ -5,7 +5,12 @@ import urllib
 import re
 
 
-def get_links(url):
+def get_links(name, url):
+
+    root_folder = 'sites'
+    path = root_folder + "/" + name + "/" + "crawled.txt"
+
+    f = open(path, 'w')
 
     print("Spider Started....")
     requests = urllib.urlopen(url, data=None)
@@ -13,8 +18,6 @@ def get_links(url):
 
     find_links = re.findall('<a href="(.*?)">', str(links))     # Uses re library to find all href sources
 
-    # path = "targets/"+name+"/links.txt"
-    # f = open(path, 'w')
     url_list = []
 
     for a in find_links:
@@ -24,30 +27,26 @@ def get_links(url):
                     sub_url = a.split(" ")[0]  # Deletes all characters after whitespace
                     fullurl = url+sub_url
                     url_list.append(fullurl)
-                    # f.writelines(fullurl+"\n")
-                    # return fullurl
 
-                    for i in url_list:
+    for i in url_list:
 
-                        requests = urllib.urlopen(i, data=None)
-                        links = requests.read()
-                        print(i)
-                        print(requests.code)
+        requests = urllib.urlopen(i, data=None)
+        links = requests.read()
+        print(i)
+        print(requests.code)
 
-                        find_links = re.findall('<a href="(.*?)">', str(links))
-                        for b in find_links:
-                            if "http" not in b:
-                                if "mailto:" not in b:
-                                    sub_url = b.split(" ")[0]  # Deletes all characters after whitespace
-                                    fullurl = url + sub_url
-                                    if fullurl not in url_list:
-                                        url_list.append(fullurl)
-
+        find_links = re.findall('<a href="(.*?)">', str(links))
+        for b in find_links:
+            if "http" not in b:
+                if "mailto:" not in b:
+                    sub_url = b.split(" ")[0]  # Deletes all characters after whitespace
+                    fullurl = url + sub_url
+                    if fullurl not in url_list:
+                        url_list.append(fullurl)
 
     for x in url_list:
-        #print(x)
-        return x
+        f.write(x+"\n")
 
     print("Spider Stopping....")
 
-#get_links("http://10.0.0.2/")
+#get_links("http://itb.ie")

@@ -3,12 +3,52 @@ Main.py All functions & Libraries to run go here
 """
 from recon import *
 from spider import *
+from valiant import *
 
 
 def main():
 
     banner()
-    #report_findings("Mutillidae", "http://10.0.0.2/")
+    name = raw_input("[+] Please Enter A Targets Name: ")
+    url = raw_input("[+] Please Enter A Targets URL: ")
+
+    print("***************************************************************")
+    create_report(name, url)
+
+    print("***************************************************************")
+    sql = raw_input("[*] Scan for SQL Vulnerabilities (y/n)")
+
+    if sql == "y" or "Y":
+        print("***************************************************************")
+        sql_inject(name)
+
+    elif sql != "y" or "Y":
+        print("***************************************************************")
+
+    pathtraversal = raw_input("[*] Scan for Path Traversal Vulnerabilities (y/n)")
+    if pathtraversal == "y" or "Y":
+        print("***************************************************************")
+        path_traversal(name)
+
+    elif pathtraversal != "y" or "Y":
+        print("***************************************************************")
+
+    xss = raw_input("[*] Scan for Cross Site Scripting Vulnerabilities (y/n)")
+    if xss == "y" or "Y":
+        print("***************************************************************")
+        cross_site_script(name)
+    elif xss != "y" or "Y":
+        print("***************************************************************")
+
+    rci = raw_input(" [*] Scan for Remote Code Injection Vulnerabilities (y/n)")
+    if rci == "y" or "Y":
+        print("***************************************************************")
+        remote_code_injection(name)
+
+    elif rci != "y" or "Y":
+        print("***************************************************************")
+        print("[-] Valiant Scanner Stopping.....")
+        print("***************************************************************")
 
 
 """
@@ -18,7 +58,7 @@ Banner Function
 
 def banner():
 
-    print("***************************************************************\n"
+    print("\033[1;34m***************************************************************\n"
           "*                               ^                             *\n"                                         
           "*                              | |                            *\n"                                        
           "*                              |V|                            *\n"                                                 
@@ -38,7 +78,7 @@ def banner():
           "*                   |__----   \_!_/   ----__|                 *\n"                                          
           "*                               V                             *\n"
           "*                        Website Scanner                      *\n"
-          "***************************************************************")
+          "***************************************************************\033[1;m")
 
 
 """
@@ -52,51 +92,32 @@ def make_home_directory(directory):
 
 
 """
-Write file function
-"""
-
-
-def write_to_file(path, output):
-    f = open(path, 'w')
-    f.write(output)
-
-
-"""
-Report Findings function
-"""
-
-
-def report_findings(name, url):
-    #domain_name = get_domain_name(url)
-    #ip_address = get_ip(domain_name)
-    #robots = get_robots(domain_name)
-    #whois = get_whois(domain_name)
-    # nmap = get_nmap("-sV", ip_address)
-    spider = get_links(url)
-
-    #create_report(name, url, domain_name, ip_address, robots, whois, spider) # ,nmap
-    create_report(name, url, spider)
-
-"""
 Create Report Function
 """
 
-def create_report(name, url, spider):
-#def create_report(name, url, domain_name, ip_address, robots, whois, spider): # ,nmap
 
-    root_folder = 'targets'
+def create_report(name, url):
+
+    root_folder = 'sites'
     make_home_directory(root_folder)
 
     target_directory = root_folder+"/"+name
     make_home_directory(target_directory)
-    write_to_file(target_directory + "/url.txt", url)
-    #write_to_file(target_directory + "/domain.txt", domain_name)
-    #write_to_file(target_directory + "/ip.txt", ip_address)
-    #write_to_file(target_directory + "/robots.txt", robots)
-    #write_to_file(target_directory + "/whois.txt", whois)
-    write_to_file(target_directory + "/crawled.txt", spider)
-    #write_to_file(target_directory + "/nmap.txt", nmap)
+    print("***************************************************************")
+    print("[+] Websites IP:"+get_ip(url))
+    print("***************************************************************")
+    print("[+] Whois Information")
+    print(get_whois(url))
+    print("***************************************************************")
+    print(get_robots(url))
+    print("***************************************************************")
+    get_links(name, url)
 
 
 if __name__ == '__main__':
-    main()
+
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("[-] Keyboard Interrupt")
+        print("[-] Valiant Scanner Stopping.....")
